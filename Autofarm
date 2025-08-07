@@ -1,0 +1,19 @@
+local GS = game:GetService("GuiService")
+local VIM = game:GetService("VirtualInputManager")
+local Player = game.Players.LocalPlayer
+local Character = Player.Character
+
+workspace.StreamingEnabled = false
+
+Player.CharacterAdded:Connect(function(char)
+	Character = char
+end)
+
+while true do
+	game:GetService("ReplicatedStorage").Remotes.LaunchEvents.Launch:FireServer()
+	wait(0.5)
+	Character.HumanoidRootPart.CFrame = CFrame.new(9e17, 72, -353)
+	wait(0.3)
+	game:GetService("ReplicatedStorage").Remotes.LaunchEvents.Return:FireServer()
+	wait(2)
+end
